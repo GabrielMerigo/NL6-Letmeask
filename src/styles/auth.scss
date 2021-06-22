@@ -54,10 +54,16 @@
       align-items: center;
     }
 
+    h2{
+      font-size:24px;
+      margin: 56px 0 24px;
+      font-family: 'Poppins', sans-serif;
+    }
+
     form{
       input{
         height: 50px;
-        border: 8px;
+        border-radius: 8px;
         padding: 0 16px;
         background: #fff;
         border:1px solid #a8a8b3;
@@ -70,6 +76,16 @@
       button, input{
         width: 100%;
       }
+    }
+  }
+
+  p{
+    font-size: 14px;
+    color: #737388;
+    margin-top: 16px;
+
+    a{
+      color:#e559f9;
     }
   }
 
