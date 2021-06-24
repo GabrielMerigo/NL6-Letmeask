@@ -7,30 +7,11 @@ import '../styles/room.scss'
 import { RoomCode } from '../components/RoomCode';
 import { FormEvent, useEffect, useState } from 'react';
 import { database } from '../services/firebase';
+import { Question } from '../components/Question'
+import { useRoom } from '../hooks/useRoom';
 
 type RoomParams = {
   id: string;
-}
-
-type FirabaseQuestions = Record<string, {
-  content: string,
-  author: {
-    name: string,
-    avatar: string
-  },
-  isHighlighted: boolean,
-  isAnswer: boolean
-}>
-
-type Questions = {
-  id: string,
-  content: string,
-  author: {
-    name: string,
-    avatar: string
-  },
-  isHighlighted: boolean,
-  isAnswer: boolean
 }
 
 export function Room() {
@@ -38,30 +19,7 @@ export function Room() {
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const [newQuestion, setNewQuestion] = useState('');
-  const [questions, setQuestions] = useState<Questions[]>([]);
-  const [title, setTitle] = useState('');
-
-  useEffect(() => {
-    const roomRef = database.ref(`rooms/${roomId}`)
-
-    roomRef.on('value', room => {
-      const databaseRoom = room.val()
-      const firebaseQuestions: FirabaseQuestions = databaseRoom.questions ?? {};
-
-      const parsedQuestions = Object.entries(firebaseQuestions).map(([key, value]) => {
-        return {
-          id: key,
-          content: value.content,
-          author: value.author,
-          isHighlighted: value.isHighlighted,
-          isAnswer: value.isAnswer
-        }
-      })
-
-      setTitle(databaseRoom.title)
-      setQuestions(parsedQuestions)
-    })
-  }, [roomId])
+  const { title, questions } = useRoom(roomId)
 
   async function handleSandQuestion(event: FormEvent) {
     event.preventDefault()
@@ -101,7 +59,7 @@ export function Room() {
       <main>
         <div className="room-title">
           <h1>Sala {title}</h1>
-          { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
+          {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </div>
 
         <form onSubmit={handleSandQuestion}>
@@ -125,6 +83,19 @@ export function Room() {
             <Button type="submit" disabled={!user}>Enviar Pergunta</Button>
           </div>
         </form>
+
+        <div className="question-list">
+          {questions.map(question => {
+            return (
+              <Question
+                key={question.id}
+                content={question.content}
+                author={question.author}
+              />
+            )
+          })}
+        </div>
+
       </main>
     </div>
   )
