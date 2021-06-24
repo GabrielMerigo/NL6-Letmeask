@@ -125,8 +125,6 @@ export function Room() {
             <Button type="submit" disabled={!user}>Enviar Pergunta</Button>
           </div>
         </form>
-
-
       </main>
     </div>
   )
