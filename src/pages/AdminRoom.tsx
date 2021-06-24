@@ -1,12 +1,9 @@
 import logoImg from '../assets/images/logo.svg'
 import { useParams } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
 
 import { Button } from '../components/Button';
 import '../styles/room.scss'
 import { RoomCode } from '../components/RoomCode';
-import { FormEvent, useEffect, useState } from 'react';
-import { database } from '../services/firebase';
 import { Question } from '../components/Question'
 import { useRoom } from '../hooks/useRoom';
 
@@ -15,37 +12,10 @@ type RoomParams = {
 }
 
 export function AdminRoom() {
-  const { user } = useAuth();
+  // const { user } = useAuth();
   const params = useParams<RoomParams>();
   const roomId = params.id;
-  const [newQuestion, setNewQuestion] = useState('');
   const { title, questions } = useRoom(roomId)
-
-  async function handleSandQuestion(event: FormEvent) {
-    event.preventDefault()
-
-    if (newQuestion.trim() === '') {
-      return;
-    }
-
-    if (!user) {
-      throw new Error('You must be logged in')
-    }
-
-    const question = {
-      content: newQuestion,
-      author: {
-        name: user.name,
-        avatar: user.avatar
-      },
-      isHighlighted: false,
-      isAnswer: false
-    }
-
-    await database.ref(`rooms/${roomId}/questions`).push(question)
-
-    setNewQuestion('')
-  }
 
   return (
     <div id="page-room">
