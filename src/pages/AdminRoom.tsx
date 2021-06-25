@@ -29,11 +29,11 @@ export function AdminRoom() {
 
     history.push('/');
   }
-  
-  async function handleDeleteQuestion (questionId: string) {
+
+  async function handleDeleteQuestion(questionId: string) {
     const confirm = window.confirm('Tem certeza que deseja excluir essa pergunta?')
-    
-    if(confirm){
+
+    if (confirm) {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
     }
   }
@@ -75,21 +75,26 @@ export function AdminRoom() {
                 key={question.id}
                 content={question.content}
                 author={question.author}
-                isAnswered={question.isAnswer}
+                isAnswered={question.isAnswered}
                 isHighlighted={question.isHighlighted}
               >
-                <button
-                  type="button"
-                  onClick={() => handleQuestionAsAnswered(question.id)}
-                >
-                  <img src={checkImg} alt="Marcar Pergunta como respondida" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleHighlightQuestion(question.id)}
-                >
-                  <img src={answerImg} alt="Dar destaque à pergunta" />
-                </button>
+                {!question.isAnswered && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => handleQuestionAsAnswered(question.id)}
+                    >
+                      <img src={checkImg} alt="Marcar Pergunta como respondida" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleHighlightQuestion(question.id)}
+                    >
+                      <img src={answerImg} alt="Dar destaque à pergunta" />
+                    </button>
+                  </>
+                )
+                }
                 <button
                   type="button"
                   onClick={() => handleDeleteQuestion(question.id)}
