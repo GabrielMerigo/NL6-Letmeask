@@ -3,7 +3,7 @@
 </div>
 
 ### Let me ask
-Aplicação desenvolvida da Next Level Week Together!
+Aplicação desenvolvida na Next Level Week Together!
 ---
 Deploy: https://letmeask-84b90.web.app
 
