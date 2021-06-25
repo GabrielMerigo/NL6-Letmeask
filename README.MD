@@ -38,9 +38,9 @@ yarn start
 
 ### Aplicação desenvolvida
 
-![1](Room.png)
+![1](Home.png)
 ---
-![2](Home.png)
+![2](Room.png)
 ---
 ![3](Admin.png)
 
