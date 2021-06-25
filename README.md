@@ -1,12 +1,11 @@
 <div align="center">
-  <img src=".github/logo.svg" alt="Let me ask logo">
+  <img src="logo.svg" alt="Let me ask logo">
 </div>
 
 ### Let me ask
 Aplicação desenvolvida da Next Level Week Together!
 ---
-Deploy: https://letmeask-34e00.web.app/
-
+Deploy: https://letmeask-84b90.web.app
 
 <h5 align="center">
 Let me ask é uma plataforma que cria salas de Q&A ao vivo onde os espectadores podem enviar e votar em perguntas para serem respondidas. 
