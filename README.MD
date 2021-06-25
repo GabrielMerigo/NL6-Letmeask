@@ -23,7 +23,7 @@ Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 Clonando o projeto
 ```bash
-https://github.com/larazevedo/nlw6-react.git
+https://github.com/gabrielmerigo/nlw6-letmeask.git
 ```
 
 Instalando as dependências
