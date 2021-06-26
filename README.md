@@ -2,8 +2,8 @@
   <img src="logo.svg" alt="Let me ask logo">
 </div>
 
-### Let me ask
-Aplicação desenvolvida da Next Level Week Together!
+# Let me ask
+Aplicação desenvolvida na Next Level Week Together!
 ---
 Deploy: https://letmeask-84b90.web.app
 
@@ -23,7 +23,7 @@ Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 Clonando o projeto
 ```bash
-https://github.com/larazevedo/nlw6-react.git
+https://github.com/gabrielmerigo/nlw6-letmeask.git
 ```
 
 Instalando as dependências
